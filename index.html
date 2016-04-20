@@ -1,358 +1,292 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Untitled Document</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link type="text/css" href="resources/css/reset.css" rel="Stylesheet" />
-    <link type="text/css" href="resources/css/default.css" rel="Stylesheet" />
-
-    <script type="text/javascript">
-        if (location.href.toString().indexOf('file://localhost/') == 0) {
-            location.href = location.href.toString().replace('file://localhost/', 'file:///');
-        }
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="author" content="jacty">
+    <script src="http://c.csdnimg.cn/public/common/libs/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="http://csdnimg.cn/public/common/libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://c.csdnimg.cn/cdn/201502/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/toolbar/css2016/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <title>首页-Qualcomm |开发者专区  </title>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <script id="toolbar-tpl-scriptId" fixed="true" src="http://c.csdnimg.cn/public/common/toolbar/js/html2016.js" type="text/javascript">       </script>
+    <nav class="nav">
+      <div class="container"><a alt="开发者专区" href="#" class="logo"><span class="hidden">Qualcomm | 开发者专区</span>开发者专区</a><i class="fa fa-bars pull-right">               </i>
+        <ul class="pc">
+          <li class="cur"><a href="index.html">首页</a></li>
+          <li><a href="resource.html">资源</a></li>
+          <li><a href="news.html">资讯            </a></li>
+          <li><a href="blog.html">博客</a></li>
+          <li><a href="video.html">视频</a></li>
+          <li><a href="forum.html">论坛</a></li>
+          <li><a href="activity.html">活动</a></li>
+          <li><a href="hdclub.html">硬件俱乐部                                        </a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="nav_ctn">
+      <div class="container">
+        <div class="row">
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="resource.html">资源</a></li>
+            <li><a href="news.html">资讯            </a></li>
+            <li><a href="blog.html">博客</a></li>
+            <li><a href="video.html">视频</a></li>
+            <li><a href="forum.html">论坛</a></li>
+            <li><a href="activity.html">活动</a></li>
+            <li><a href="hdclub.html">硬件俱乐部    </a></li>
+            <li><a href="#">无线技术</a></li>
+            <li><a href="#">开发者网站</a></li>
+            <li><a href="#">Qualcomm官方网站                                      </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function(){
+          $(".nav .fa-bars").click(function(){
+          $(".nav_ctn").toggle("normal");
+          })
+      })
     </script>
-
-    <script type="text/javascript" src="resources/scripts/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="resources/scripts/player/splitter.js"></script>
-    <script type="text/javascript" src="resources/scripts/axutils.js"></script>
-    <script type="text/javascript" src="resources/scripts/player/axplayer.js"></script>
-    <script type="text/javascript" src="resources/scripts/messagecenter.js"></script>
-    <script type="text/javascript" src="data/document.js"></script>
-    <style type="text/css">
-
-#outerContainer {
-	width:1000px;
-	height:1500px;
-}
-
-.vsplitbar {
-	width: 3px;
-	background: #B9B9B9;
-}
-
-#rightPanel {
-    background-color: White;
-}
-
-#leftPanel {
-    /*min-width: 190px;*/
-}
-
-.splitterMask {
-   position:absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   overflow: hidden;
-   background-image: url(resources/images/transparent.gif);
-   z-index: 20000;
-}
-
-
-    </style>
-    <script type="text/javascript" language="JavaScript"><!--
-        // isolate scope
-        (function() {
-            setUpController();
-
-            var configuration = $axure.document.configuration;
-            var _settings = {};
-            _settings.projectId = configuration.prototypeId;
-            _settings.isAxshare = configuration.isAxshare;
-            _settings.loadFeedbackPlugin = configuration.loadFeedbackPlugin;
-            _settings.startCollapsed = HashString("c") == "1";
-            if(HashString("c") == "2") closePlayer();
-
-            $axure.player.settings = _settings;
-
-            $(window).bind('load', function() {
-                if(CHROME_5_LOCAL && !$('body').attr('pluginDetected')) {
-                    window.location = 'resources/chrome/chrome.html';
-                }
-            });
-
-            $(document).ready(function() {
-                $axure.page.bind('load.start', mainFrame_onload);
-                $axure.messageCenter.addMessageListener(messageCenter_message);
-
-                if($axure.player.settings.loadFeedbackPlugin) {
-                    if($axure.player.settings.isAxshare) {
-                        $axure.utils.loadJS('/Scripts/plugins/feedback/feedback.js');
-                    } else {
-                        $axure.utils.loadJS('http://share.axure.com/Scripts/plugins/feedback/feedback.js');
-                    }
-                }
-
-                if(navigator.userAgent.indexOf("MSIE") >= 0) $('#outerContainer').width('100%');
-                initialize();
-                if($axure.player.settings.startCollapsed) $('#outerContainer').splitter({ sizeLeft: 0 });
-                else $('#outerContainer').splitter({ sizeLeft: 250 });
-                $('#leftPanel').width(250);
-
-                $(window).resize(function() { resizeContent(); });
-
-                $('#maximizePanelContainer').hide();
-
-                initializeLogo();
-
-                $(window).resize();
-                resizeContent();
-                //wait for ie to get to a good state and resize
-                if(IE && BROWSER_VERSION == "6.0") setTimeout(function() { $('#outerContainer').trigger('resize'); }, 30);
-
-                if($axure.player.settings.startCollapsed) {
-                    collapse();
-                    $('#leftPanel').width(0);
-                }
-            });
-        })();
-
-        var lastLeftPanelWidth = 250;
-
-        function messageCenter_message(message, data) {
-            if(message == 'expandFrame') expand();
-        }
-
-        function resizeContent() {
-            var newHeight = $(window).height();
-            var newWidth = $(window).width();
-
-            var controlContainerHeight = newHeight - 42;
-            if($('#interfaceControlFrameLogoContainer').is(':visible')) controlContainerHeight -= $('#interfaceControlFrameLogoContainer').height() + 16;
-
-            $('#outerContainer').height(newHeight).width(newWidth);
-            $('.vsplitbar').height(newHeight);
-            $('#leftPanel').height(newHeight);
-            $('#interfaceControlFrame').height(newHeight);
-            $('#interfaceControlFrameContainer').height(controlContainerHeight);
-
-            $('#rightPanel').height(newHeight);
-            $('#mainFrame').height(newHeight);
-
-            if($('#leftPanel').is(':visible')) $('#rightPanel').width($(window).width() - $('#leftPanel').width() - $('.vsplitbar').width());
-            else $('#rightPanel').width($(window).width());
-        }
-
-        function closePlayer() {
-            if($axure.page.location) window.location.href = $axure.page.location;
-            else {
-                var pageFile = getInitialUrl();
-                var currentLocation = window.location.toString();
-                window.location.href = currentLocation.substr(0, currentLocation.lastIndexOf("/") + 1) + pageFile;
-            }
-        }
-
-        function replaceHash(newHash) {
-            var currentLocWithoutHash = window.location.toString().split('#')[0];
-
-            //We use replace so that every hash change doesn't get appended to the history stack.
-            //We use replaceState in browsers that support it, else replace the location
-            if(typeof window.history.replaceState != 'undefined') {
-                try {
-                    //Chrome 45 (Version 45.0.2454.85 m) started throwing an error here when generated locally (this only happens with sitemap open) which broke all interactions.
-                    //try catch breaks the url adjusting nicely when the sitemap is open, but all interactions and forward and back buttons work.
-                    //Uncaught SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'file:///C:/Users/Ian/Documents/Axure/HTML/Untitled/start.html#p=home' cannot be created in a document with origin 'null'.
-                    window.history.replaceState(null, null, currentLocWithoutHash + newHash);
-                } catch(ex) {}
-            } else {
-                window.location.replace(currentLocWithoutHash + newHash);
-            }
-        }
-
-        function collapse() {
-            var currentHash = window.location.hash;
-            //If the collapse hash string var isn't present and set to 1, insert it
-            if (currentHash.indexOf('#c=1') == -1 && currentHash.indexOf('&c=1') == -1) {
-                var hashToSet = '';
-
-                var varIndex = currentHash.indexOf('#c=');
-                if (varIndex == -1) varIndex = currentHash.indexOf('&c=');
-                if (varIndex != -1) {
-                    var newHash = currentHash.substring(0, varIndex);
-
-                    newHash = newHash == '' ? '#c=1' : newHash + '&c=1';
-
-                    var ampIndex = currentHash.indexOf('&', varIndex + 1);
-                    if (ampIndex != -1) {
-                        newHash = newHash + currentHash.substring(ampIndex);
-                    }
-                    hashToSet = newHash;
-                } else if (currentHash.indexOf('#') != -1) {
-                    hashToSet = currentHash + '&c=1';
-                } else {
-                    hashToSet = '#c=1';
-                }
-
-                if (hashToSet != '') {
-                    replaceHash(hashToSet);
-                }
-            }
-
-            $('#maximizePanelContainer').show();
-            lastLeftPanelWidth = $('#leftPanel').width();
-            $('#leftPanel').hide();
-            $('.vsplitbar').hide();
-            $('#rightPanel').width($(window).width());
-            $(window).resize();
-            $('#outerContainer').trigger('resize');
-        }
-
-        function expand() {
-            var currentHash = self.location.hash;
-            var varIndex = currentHash.indexOf('&c=');
-            if (varIndex == -1) varIndex = currentHash.indexOf('#c=');
-            //If the collapse hash string var is present, remove it
-            if (varIndex != -1) {
-                var newHash = currentHash.substring(0, varIndex);
-
-                var ampIndex = currentHash.indexOf('&', varIndex + 1);
-                if (ampIndex != -1) {
-                    newHash = newHash == '' ? '#' + currentHash.substring(ampIndex + 1) : newHash + currentHash.substring(ampIndex);
-                }
-
-                replaceHash(newHash);
-            }
-
-            $('#maximizePanelContainer').hide();
-            $('#leftPanel').width(lastLeftPanelWidth);
-            $('#leftPanel').show();
-            $('.vsplitbar').show();
-            $('#rightPanel').width($(window).width() - $('#leftPanel').width() - $('.vsplitbar').width());
-            $(window).resize();
-            $('#outerContainer').trigger('resize');
-        }
-
-        function initialize() {
-            var legacyQString = QueryString("Page");
-            if (legacyQString.length > 0) {
-                location.href = location.href.substring(0, location.href.indexOf("?")) + "#p=" + legacyQString;
-                return;
-            }
-
-            var mainFrame = document.getElementById("mainFrame");
-            mainFrame.contentWindow.location.href = getInitialUrl();
-        }
-        
-        function getInitialUrl() {
-            var pageName = HashString("p");
-            if(pageName.length > 0) return pageName + ".html";
-            else {
-                var url = getFirstPageUrl($axure.document.sitemap.rootNodes);
-                return (url ? url : "about:blank");
-            }
-        }
-
-        function getFirstPageUrl(nodes) {
-            for (var i = 0; i < nodes.length; i++) {
-                var node = nodes[i];
-                if (node.url) return node.url;
-                else {
-                    var hasChildren = (node.children && node.children.length > 0);
-                    if (hasChildren) {
-                        var url = getFirstPageUrl(node.children);
-                        if (url) return url;
-                    }
-                }
-            }
-            return null;
-        }
-
-        function initializeLogo() {
-            if($axure.document.configuration.logoImagePath) {
-                $('#interfaceControlFrameLogoImageContainer').html('<img id="logoImage" src="" />');
-                $('#logoImage').attr('src', $axure.document.configuration.logoImagePath).load(function() { resizeContent(); });
-                $('#interfaceControlFrameMinimizeContainer').css('background-color', '#FFFFFF');
-            } else $('#interfaceControlFrameLogoImageContainer').hide();
-
-            if ($axure.document.configuration.logoImageCaption) {
-                $('#interfaceControlFrameLogoCaptionContainer').html($axure.document.configuration.logoImageCaption);
-                $('#interfaceControlFrameMinimizeContainer').css('background-color', '#FFFFFF');
-            } else $('#interfaceControlFrameLogoCaptionContainer').hide();
-
-            if(!$('#interfaceControlFrameLogoImageContainer').is(':visible') && !$('#interfaceControlFrameLogoCaptionContainer').is(':visible')) {
-                $('#interfaceControlFrameLogoContainer').hide();
-            }
-        }
-
-        function mainFrame_onload() {
-            if($axure.page.pageName) document.title = $axure.page.pageName;
-        }
-
-        function QueryString(query) {
-            var qstring = self.location.href.split("?");
-            if(qstring.length < 2) return "";
-            return GetParameter(qstring, query);
-        }
-        
-        function GetParameter(qstring, query) {
-            var prms = qstring[1].split("&");
-            var frmelements = new Array();
-            var currprmeter, querystr = "";
-
-            for(var i = 0; i < prms.length; i++) {
-                currprmeter = prms[i].split("=");
-                frmelements[i] = new Array();
-                frmelements[i][0] = currprmeter[0];
-                frmelements[i][1] = currprmeter[1];
-            }
-
-            for(j = 0; j < frmelements.length; j++) {
-                if(frmelements[j][0].toLowerCase() == query.toLowerCase()) {
-                    querystr = frmelements[j][1];
-                    break;
-                }
-            }
-            return querystr;
-        }
-        
-        function HashString(query) {
-            var qstring = self.location.href.split("#");
-            if(qstring.length < 2) return "";
-            return GetParameter(qstring, query);
-        }
-
-    --></script>
-
-    <link type="text/css" rel="Stylesheet" href="plugins/sitemap/styles/sitemap.css" />
-    <script type="text/javascript" src="plugins/sitemap/sitemap.js"></script>
-    <link type="text/css" rel="Stylesheet" href="plugins/page_notes/styles/page_notes.css" />
-    <script type="text/javascript" src="plugins/page_notes/page_notes.js"></script>
-
-</head>
-<body scroll="no">
-    <div id="outerContainer">
-
-        <div id="leftPanel">
-            <div id="interfaceControlFrame">
-                <div id="interfaceControlFrameMinimizeContainer">
-                    <a title="Minimize" id="interfaceControlFrameMinimizeButton" onclick="collapse();">&nbsp;</a>
-                    <div id="interfaceControlFrameCloseContainer">
-                        <a title="Close" id="interfaceControlFrameCloseButton" onclick="closePlayer();">&nbsp;</a>
-                    </div>
-                </div>
-                <div id="interfaceControlFrameLogoContainer">
-                    <div id="interfaceControlFrameLogoImageContainer"></div>
-                    <div id="interfaceControlFrameLogoCaptionContainer"></div>
-                </div>
-                <div id="interfaceControlFrameHeaderContainer">
-                    <ul id="interfaceControlFrameHeader">
-                    </ul>
-                </div>
-                <div id="interfaceControlFrameContainer">
-                </div>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="banner col-xs-12 col-md-8">
+            <ul>
+              <li class="cur"><a href="#"><img src="images/banner.jpg"></a></li>
+              <li><a href="#"><img src="images/banner2.jpg"></a></li>
+              <li><a href="#"><img src="images/banner.jpg"></a></li>
+              <li><a href="#"><img src="images/banner2.jpg"></a></li>
+              <li><a href="#"><img src="images/banner.jpg"></a></li>
+              <li><a href="#"><img src="images/banner2.jpg"></a></li>
+              <li>
+                <ul class="order">
+                  <li class="cur"><a href="javascript:void;"></a></li>
+                  <li><a href="javascript:void;"></a></li>
+                  <li><a href="javascript:void;"> </a></li>
+                  <li><a href="javascript:void;"> </a></li>
+                  <li><a href="javascript:void;"> </a></li>
+                  <li><a href="javascript:void;"> </a></li>
+                  <li><a href="http://www.baidu.com" class="more"> 更多&gt; </a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="download col-xs-12">
+            <div class="ctn">
+              <h2>最新下载<span>    </span></h2><a href="#">&gt; App Tune-up Kit </a>
+              <p>App Tune-up Kit 为开发人员提供了一种创新方法，能够在短短60秒内分析任何Android应用。手指轻点，您就可以从五大关键方面评估应用性能：CPU、GPU、功耗、发热量及移动网络数据。  </p>
             </div>
+          </div>
         </div>
-        <div id="rightPanel">
-            <iframe id="mainFrame" name="mainFrame" width="100%" height="100%" src="" frameborder="0" style="display: block;"></iframe>
+      </div>
+    </header>
+    <div class="what">
+      <div class="container">
+        <h2>你能做什么 ?           </h2>
+        <div class="row"> 
+          <div class="item col-xs-12 col-sm-6 col-md-3">
+            <div class="img-wrap"><a href="#"><img src="images/what1.jpg">
+                <h3>嵌入式</h3>
+                <p>嵌入式就是嵌入式，嵌入到里面的方程式。</p></a></div>
+            <p>嵌入式就是嵌入式，嵌入到里面的方程式。                                                </p>
+            <ul>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse</a></li>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse</a></li>
+            </ul>
+          </div>
+          <div class="item col-xs-12 col-sm-6 col-md-3">
+            <div class="img-wrap"><a href="#"><img src="images/what2.jpg">
+                <h3>游戏</h3>
+                <p>在这里我们提供与游戏开发相关的技术最新资讯、技术达人博客互动、常见问题答疑解惑。并提供近距离点对点通讯技术AllJoyn、Adreno GPU、扩增实境技术Vuforia等SDK下载和技术支持。                            </p></a></div>
+            <p>在这里我们提供与游戏开发相关的技术最新资讯、技术达人博客互动、常见问题答疑解惑。并提供近距离点对点通讯技术AllJoyn、Adreno GPU、扩增实境技术Vuforia等SDK下载和技术支持。</p>
+            <ul>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse</a></li>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse                    </a></li>
+            </ul>
+          </div>
+          <div class="item col-xs-12 col-sm-6 col-md-3">
+            <div class="img-wrap"><a href="#"><img src="images/what3.jpg">
+                <h3>物联网</h3>
+                <p>物联网就是万物相联的蜘蛛网</p></a></div>
+            <p>物联网就是万物相联的蜘蛛网</p>
+            <ul>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse</a></li>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse                    </a></li>
+            </ul>
+          </div>
+          <div class="item col-xs-12 col-sm-6 col-md-3">
+            <div class="img-wrap"><a href="#"><img src="images/what4.jpg">
+                <h3>骁龙™处理器</h3>
+                <p>骁龙™处理器是特妈系列的主流浏览器                            </p></a></div>
+            <p>骁龙™处理器是特妈系列的主流浏览器</p>
+            <ul>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse111111111111111111111111111111111111111111111111111</a></li>
+              <li> <a href="#"> <span></span>Trepn plug-in Eclipse     </a></li>
+            </ul>
+          </div>
         </div>
-
+      </div>
     </div>
-
-    <div id="maximizePanelContainer">
-        <iframe id="expandFrame" src="resources/expand.html" width="100%" height="100%" scrolling="no" allowtransparency="true" frameborder="0"></iframe>
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="mod-l col-xs-12 col-md-8">
+            <div class="hwclub mod">
+              <h2>硬件俱乐部<a href="#" class="more">更多</a></h2><a href="#"><img src="images/hwpic.jpg"></a>
+              <div class="brief col-xs-12 col-sm-7 col-md-6 col-lg-7">
+                <h3> <a href="#">DragonBoard™ 410c</a></h3>
+                <p>DragonBoard™ 410c 将是首款基于Qualcomm® Snapdragon™ 400系列处理器的开发板。它有许多高级特性，强大的处理器，Wi-Fi和蓝牙连接，支持GPS。所有这些先进的功能都集成在仅有信用卡大小的一张开发板中。基于64bit计算的Snapdragon410处理器…</p><a href="#" class="btn tobuy">立即购买</a><a href="#" class="btn">申请使用</a><a href="#" class="btn">了解更多</a>
+              </div>
+              <div class="clearfix"> </div>
+            </div>
+            <div class="news mod">
+              <h2>动态</h2>
+              <div class="item"><a href="#"><img src="images/news1.jpg"></a>
+                <div class="brief col-xs-12">
+                  <h3> <a href="#">【资讯】基于Dragonboard410c实现家居智能…</a></h3>
+                  <p>智能家居越来越多的在普通家庭普及，一套智能家居就是一个系统，包含传感单元、中央处理单元、信号传输单元和控制单元等等，利用不同的传感器和处理方法可以做出不同的体验效果，这里就基于…</p><a href="#" class="tag">高通</a><a href="#" class="tag">智能家居</a><a href="#" class="tag">DragonBoard410c</a>
+                  <p class="posttime"> <span>时间：2016-01-18 15:12       </span><span>来源：CSDN 资讯</span></p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="item"><img src="images/news2.jpg">
+                <div class="brief col-xs-12">
+                  <h3> <a href="#">【资讯】DragonBoard™开发套件</a></h3>
+                  <p>DragonBoard开发平台是一套基于骁龙处理器，由第三方供货商生产的开发工具。此开发工具能帮助开发者更好地使用骁龙处理器，并帮助开发者们充分利用插脚，连接器，适配器，扩展头等硬件和功…</p><a href="#" class="tag">高通</a><a href="#" class="tag">智能家居</a><a href="#" class="tag">DragonBoard410c</a>
+                  <p class="posttime"><span>时间：2016-01-18 15:12       </span><span>来源：CSDN 资讯</span></p>
+                </div>
+                <div class="clearfix">   </div>
+              </div>
+              <div class="item">
+                <div class="brief col-xs-12">
+                  <h3> <a href="#">【资讯】DragonBoard™开发套件</a></h3>
+                  <p>DragonBoard开发平台是一套基于骁龙处理器，由第三方供货商生产的开发工具。此开发工具能帮助开发者更好地使用骁龙处理器，并帮助开发者们充分利用插脚，连接器，适配器，扩展头等硬件和功…</p><a href="#" class="tag">高通</a><a href="#" class="tag">智能家居</a><a href="#" class="tag">DragonBoard410c</a>
+                  <p class="posttime"> <span>时间：2016-01-18 15:12       </span><span>来源：CSDN 资讯</span></p>
+                </div>
+                <div class="clearfix"> </div>
+              </div>
+              <div class="item">
+                <div class="brief col-xs-12">
+                  <h3> <a href="#">【资讯】DragonBoard™开发套件</a></h3>
+                  <p>DragonBoard开发平台是一套基于骁龙处理器，由第三方供货商生产的开发工具。此开发工具能帮助开发者更好地使用骁龙处理器，并帮助开发者们充分利用插脚，连接器，适配器，扩展头等硬件和功…</p><a href="#" class="tag">高通</a><a href="#" class="tag">智能家居</a><a href="#" class="tag">DragonBoard410c</a>
+                  <p class="posttime"> <span>时间：2016-01-18 15:12       </span><span>来源：CSDN 资讯</span></p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="item">
+                <div class="brief col-xs-12">
+                  <h3> <a href="#">【资讯】DragonBoard™开发套件</a></h3>
+                  <p>DragonBoard开发平台是一套基于骁龙处理器，由第三方供货商生产的开发工具。此开发工具能帮助开发者更好地使用骁龙处理器，并帮助开发者们充分利用插脚，连接器，适配器，扩展头等硬件和功…</p><a href="#" class="tag">高通</a><a href="#" class="tag">智能家居</a><a href="#" class="tag">DragonBoard410c</a>
+                  <p class="posttime"> <span>时间：2016-01-18 15:12       </span><span>来源：CSDN 资讯</span></p>
+                </div>
+                <div class="clearfix"> </div>
+              </div>
+            </div>
+            <div class="half col-xs-12 col-sm-6 blog">
+              <h2>热门博客   <a href="#" class="more">更多</a></h2>
+              <ul>
+                <li><a href="#">基于Dragon Board410c 语音唤醒控制</a></li>
+                <li><a href="#">Dragonboard 410c 搭建Windows10 IOT</a></li>
+                <li><a href="#">基于Dragon Board410c 语音唤醒控制</a></li>
+                <li><a href="#">Dragonboard 410c 搭建Windows10 IOT </a></li>
+                <li><a href="#">基于Dragon Board410c 语音唤醒控制</a></li>
+              </ul>
+            </div>
+            <div class="half col-xs-12 col-sm-6 bbs">
+              <h2>论坛精华   <a href="#" class="more">更多</a></h2>
+              <ul>
+                <li><a href="#">【论坛活动】是时候用个官方的系统监</a></li>
+                <li><a href="#">alljoyn学习资料一揽子下载，小伙伴们</a></li>
+                <li><a href="#">【论坛活动】是时候用个官方的系统监系统监系...</a></li>
+                <li><a href="#">alljoyn学习资料一揽子下载，小伙伴们 </a></li>
+                <li><a href="#">【论坛活动】是时候用个官方的系统监系统监系...</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="mod-r col-xs-12 col-md-4">
+            <div class="mod login">
+              <p class="brief">Qualcomm开发者专区是Qualcomm和CSDN联合建立的针对中国移动开发者的技术专区。其将为移动开发者打造一流的开发环境，提供丰富的帮助和解决方案，提供最新的新闻资讯以及最全面的技术下载。以游戏、多媒体、高效能等三个用户最关注的技术领域为核心，打造一个全面的移动开发者技术服务社区。</p><a href="#" class="join hidden">加入Qualcomm开发者专区    <span><em></em></span></a>
+              <div class="account"><a href="#"><img src="images/avatar.jpg"></a>
+                <p class="tit">用户姓名<a href="#" class="edit"><i class="fa fa-pencil"></i></a></p>
+                <p class="com">csdn</p>
+                <p class="pos">网页/多媒体设计师</p>
+              </div>
+            </div>
+            <div class="mod solution">
+              <h2>Qualcomm解决方案</h2>
+              <div class="sudoka"><a href="#" class="col-xs-4">汽车</a><a href="#" class="col-xs-4">教育</a><a href="#" class="col-xs-4">医疗保健</a><a href="#" class="col-xs-4">物联网</a><a href="#" class="col-xs-4">移动计算</a><a href="#" class="col-xs-4">网络连接</a><a href="#" class="col-xs-4">智慧城市</a><a href="#" class="col-xs-4">汽车</a><a href="#" class="col-xs-4">可穿戴设备</a></div>
+              <div class="clearfix"></div>
+              <div class="intro">
+                <p>Qualcomm解决方案说明文字，Qualcomm解决方案说明文字Qualcomm解决方案说明文字，说明文字Qualcomm解决方案说明文字。</p><a href="#">了解全部产品解决方案</a>
+              </div>
+            </div>
+            <div class="mod activity">
+              <h2>Qualcomm活动   <a href="#" class="more">更多</a></h2>
+              <div class="item">
+                <div class="cal">
+                  <p>2月25日</p>
+                  <p>北京</p>
+                </div>
+                <p> <a href="#">基于 Dragonboard410c 实现家居智能控制</a></p>
+              </div>
+              <div class="item">
+                <div class="cal">
+                  <p>2月25日</p>
+                  <p>北京</p>
+                </div>
+                <p> <a href="#">基于 Dragonboard410c 实现家居智能控制 </a></p>
+              </div>
+              <div class="item">
+                <div class="cal">
+                  <p>2月25日</p>
+                  <p>北京</p>
+                </div>
+                <p> <a href="#">基于 Dragonboard410c实现家居智能控制</a></p>
+              </div>
+            </div>
+            <div class="mod sdk">
+              <h2>SDK 下载   </h2>
+              <p>本版块下载SDK，只需简单注册，就可轻松下载。</p>
+              <div class="item col-xs-6"><a href="#"> <span>App Tune-up Kit111</span><span>&gt;</span></a></div>
+              <div class="item col-xs-6"><a href="#"> <span>App Tune-up Kit111</span><span>&gt;</span></a></div>
+              <div class="item col-xs-6"><a href="#"> <span>App Tune-up Kit111</span><span>&gt;</span></a></div>
+              <div class="item col-xs-6"><a href="#"> <span>App Tune-up Kit111</span><span>&gt;</span></a></div>
+              <div class="item col-xs-6"><a href="#"> <span>App Tune-up Kit111</span><span>&gt;</span></a></div>
+              <div class="item col-xs-6"><a href="#"> <span>App Tune-up Kit111</span><span>&gt;                                                                                                                                                                </span></a></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="mod video">
+              <h2>Qualcomm视频   <a href="#" class="more">更多</a></h2>
+              <ul>
+                <li><a href="#">基于 Dragonboard410c 实现家居智能控制11111111111111</a></li>
+                <li><a href="#">基于 Dragonboard410c 实现家居智能控制</a></li>
+                <li><a href="#">基于 Dragonboard410c 实现家居智能控制</a></li>
+              </ul>
+            </div>
+            <div class="mod expert">
+              <h2>Qualcomm技术专家   </h2><a href="#"><img src="images/avatar.jpg"></a><a href="#"><img src="images/avatar.jpg"></a><a href="#"><img src="images/avatar.jpg"></a><a href="#"><img src="images/avatar.jpg"></a>
+              <div class="clearfix"></div>
+              <div class="intro">
+                <p>Qualcomm解决方案说明文字，Qualcomm解决方案说明文字Qualcomm解决方案说明文字，说明文字Qualcomm解决方案说明文字。</p><a href="#">申请成为社区技术专家</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-</body>
+    <script type="text/javascript" src="http://csdnimg.cn/pubfooter/js/publib_footer.js"></script>
+    <script id="noticeScript" type="text/javascript" btnid="header_notice_num" wrapid="note1" count="5" subcount="5" src="http://csdnimg.cn/rabbit/notev2/js/notify.js"></script>
+    <script type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>
+    <script src="http://c.csdnimg.cn/cdn/201502/js/bootstrap.min.js"></script>
+    <script src="js/main.js">                           </script>
+  </body>
 </html>
